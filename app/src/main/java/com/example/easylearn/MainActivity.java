@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,135 +25,30 @@ import android.widget.Toolbar;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton button,button2,button3;
-    TextToSpeech mTTS;
-
-
+    Button start;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
-        ActionBar ab=getSupportActionBar();
-
-
-
-        button = (ImageButton) findViewById(R.id.imageButton);
-        button2 = (ImageButton) findViewById(R.id.imageButton2);
-        button3 = (ImageButton) findViewById(R.id.imageButton3);
-
-        mTTS =new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if(status==TextToSpeech.SUCCESS)
-                {
-                    int result = mTTS.setLanguage(Locale.ENGLISH);
-
-                    if (result == TextToSpeech.LANG_MISSING_DATA
-                            || result == TextToSpeech.LANG_NOT_SUPPORTED){
-                        Log.e("TTS","Langauge not supported");
-                    }
-
-                }
-
-            }
-
-
-        });
-
-
-
-
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openModel();
-                //speak();
-            }
-        });
-
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openModel2();
-            }
-        });
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openModel3();
-            }
-        });
-
-
-
+        start = findViewById(R.id.start);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu , menu);
-        return true;
+    public void startAnimals(View view) {
+        Intent intent = new Intent(this, Animals.class);
+        startActivity(intent);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu:
-                speak();
-            case R.id.settings:
-                openSettings();
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void openModel() {
-        Intent i = new Intent(this, Model.class);
-        i.putExtra("keyname","Tiger");
-        startActivity(i);
-    }
-
-    public void openModel2()
-    {
-        Intent i = new Intent(this, Model.class);
-        i.putExtra("keyname","Lion");
-        startActivity(i);
-    }
-
-    public void openModel3() {
-        Intent i = new Intent(this, Model.class);
-        i.putExtra("keyname","Jaguar");
-        startActivity(i);
-    }
-
-    public void openSettings()
-    {
-        Intent i = new Intent(this,Settings.class);
-        startActivity(i);
-    }
-
-    public void speak()
-    {
-        String text = "Welcome to our app of Animal Virtual World.Here you will see various wild animals in augmented reality form. Click the animal which you want to see and tap the plane surface in camera after clicking any of the below buttons.";
-        float pitch =1/2;
-        float speed = 1/2;
-
-        mTTS.setPitch(pitch);
-        mTTS.setSpeechRate(speed);
-
-        mTTS.speak(text , TextToSpeech.QUEUE_FLUSH,null);
-
-    }
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
 
 
 

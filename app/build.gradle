@@ -65,3 +65,29 @@ sceneform.asset('sampledata/jaguar.obj',
         'default',
         'sampledata/jaguar.sfa',
         'src/main/res/raw/jaguar')
+
+
+sceneform.asset('sampledata/cheetah.obj',
+        'default',
+        'sampledata/cheetah.sfa',
+        'src/main/res/raw/cheetah')
+
+sceneform.asset('sampledata/muledeer.obj',
+        'default',
+        'sampledata/muledeer.sfa',
+        'src/main/res/raw/muledeer')
+
+sceneform.asset('sampledata/snowleopard.obj',
+        'default',
+        'sampledata/snowleopard.sfa',
+        'src/main/res/raw/snowleopard')
+
+sceneform.asset('sampledata/zebra.obj',
+        'default',
+        'sampledata/zebra.sfa',
+        'src/main/res/raw/zebra')
+
+sceneform.asset('sampledata/snake.obj',
+        'default',
+        'sampledata/snake.sfa',
+        'src/main/res/raw/snake')
