@@ -1,0 +1,50 @@
+{
+  materials: [
+    {
+      name: 'MuleDeer_mat',
+      parameters: [
+        {
+          baseColor: 'MuleDeer_BaseColor',
+        },
+        {
+          baseColorTint: [
+            0.11,
+            0.11,
+            0.11,
+            1,
+          ],
+        },
+        {
+          metallic: 0,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/muledeer.obj',
+    name: 'muledeer',
+    recenter: 'root',
+    scale: 0.20859,
+  },
+  samplers: [
+    {
+      file: 'sampledata\\MuleDeer_BaseColor.png',
+      name: 'MuleDeer_BaseColor',
+      pipeline_name: 'MuleDeer_BaseColor.png',
+    },
+  ],
+  version: '0.54:2',
+}
